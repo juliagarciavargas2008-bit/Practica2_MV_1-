@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -5,40 +6,42 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cerve;
+    private GameObject prefab;
     [SerializeField]
     private Transform spwan;
     [SerializeField]
-    private float CoolDown;
     private InputAction disparar;
-    private float tiempo;
-    private bool pulso;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private InputAction move;
+    private Vector2 direccion;
+    private Array orden;
+  
     void Start()
     {
-
         disparar = InputSystem.actions.FindAction("Jump");
         if (disparar != null) disparar.Enable();
-      
-        pulso = true;
 
+        move = InputSystem.actions.FindAction("move");
+        if (move != null) move.Enable();
+
+        orden = UnityEngine.Object.FindObjectsByType<PlayerStandPoint>( FindObjectsSortMode.None);
+      
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float boton = disparar.ReadValue<float>();
-        tiempo += Time.deltaTime;
-        if (boton > 0f && tiempo > CoolDown && pulso)
+        direccion = move.ReadValue<Vector2>();
+       if (disparar.WasPressedThisFrame())
         {
-            Instantiate(cerve);
-            cerve.transform.position = spwan.transform.position;
-            tiempo = 0f;
-            pulso = false;
+            Instantiate(prefab);
+            prefab.transform.position = spwan.transform.position;
         }
-        else if (boton <= 0f)
+
+        if (move.WasPressedThisFrame())
         {
-            pulso = true;
+            Debug.Log("arriba");
         }
+        ;
+    
     }
+ 
 }
