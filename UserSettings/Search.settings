@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 trackSelection = true
 refreshSearchWindowsInPlayMode = false
 pickerAdvancedUI = false
@@ -88,3 +89,6 @@ minIndexVariations = 2
 findProviderIndexHelper = true
 itemIconSize = 32
 version = 1
+=======
+{}
+>>>>>>> Stashed changes
