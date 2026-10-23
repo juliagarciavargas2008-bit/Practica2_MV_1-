@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
     [SerializeField]
-    private Transform spwan;
+    private Transform spawn;
     [SerializeField]
     private InputAction disparar;
     private InputAction arriba;
     private InputAction abajo;
-    private Array componente;
-    private Array[] orden;
+    private PlayerStandPoint[] componente;
+    private int ind;
 
     void Start()
     {
@@ -32,30 +32,73 @@ public class PlayerController : MonoBehaviour
         abajo = InputSystem.actions.FindAction("Next");
         if (abajo != null) abajo.Enable();
 
-        componente =  UnityEngine.Object.FindObjectsOfType<PlayerStandPoint>();
-        orden = new System.Array[] { componente };
+        componente =  UnityEngine.Object.FindObjectsByType<PlayerStandPoint>();
+        ind = 1;
+        transform.position = RegresaPos().position;
     }
 
     void Update()
     {
-        if (disparar.WasPressedThisFrame())
-        {
-            Instantiate(prefab);
-            prefab.transform.position = spwan.transform.position;
-        }
 
         if (arriba.WasPressedThisFrame())
         {
             Debug.Log("arriba");
-            for (int i = 0; i < componente.Length; i++)
+            if (ind == 1)
             {
-                
+                ind = componente.Length;
+                transform.position = RegresaPos().position;
+            }
+            else
+            {
+                ind--;
+                transform.position = RegresaPos().position;
             }
             
         }
         else if (abajo.WasPressedThisFrame())
         {
             Debug.Log("abajo");
+            if (ind == componente.Length)
+            {
+                ind = 1;
+                transform.position = RegresaPos().position;
+            }
+            else
+            {
+                ind++;
+                transform.position = RegresaPos().position;
+            }
+
         }
+        
+        if (disparar.WasPressedThisFrame())
+        {
+            //transform.position = RegresaPos().position;
+            //Debug.Log(spawn.position);
+            Debug.Log(RegresaPos().position);
+            Debug.Log(ind);
+            ind++;
+            ind--;
+            transform.position= RegresaPos().position;
+            Instantiate(prefab);
+            prefab.transform.position = // RegresaPos().position//;
+            prefab.transform.position = new Vector2 (0, 5);
+            Instantiate(prefab);
+            prefab.transform.position = RegresaPos().position;
+        } 
+        //Debug.Log(ind);
+        //Debug.Log(spawn.position);
+    }
+    private Transform RegresaPos()
+    {
+        Transform ret = null;
+        for (int i = 0; i < componente.Length; i++)
+        {
+           if (componente[i].GetOrden() == ind)
+            {
+                ret = componente[i].transform;
+            }
+        }
+        return ret;
     }
 }
