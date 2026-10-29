@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
         if (disparar.WasPressedThisFrame())
         {
             Debug.Log(spawn.position);
-            Instantiate(prefab);
             prefab.transform.position = spawn.position;
+            Instantiate(prefab);
         } 
     }
     private Transform RegresaPos()
