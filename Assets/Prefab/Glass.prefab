@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 4421180831946340164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.5, z: 0}
+  m_LocalPosition: {x: -5.843984, y: 0.41799998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf406c9d390d0a74aa2df9b6e6ee234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desliza
-  vel: 1
+  speed: 2
 --- !u!61 &7032306394889697283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0020039082, y: 0.11622867}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -185,7 +185,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.48298264, y: 0.76754266}
   m_EdgeRadius: 0
 --- !u!50 &6383169986324556078
 Rigidbody2D:
@@ -226,5 +226,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb08ef5eda297d458f46b4a51ad7a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  source: {fileID: 5228784016631342018, guid: 5aa75e8516eaf474eaeb5c8a37204266, type: 3}
-  puntos: 0
+  clip: {fileID: 8300000, guid: 5da2ad380c3f46349a74a376e06ac2cf, type: 3}
+  puntos: 100

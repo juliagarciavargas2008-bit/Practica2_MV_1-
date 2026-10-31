@@ -3,17 +3,14 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource source;
+    private AudioClip clip;
+
     [SerializeField]
     private int puntos;
 
-    private void OnDestroy()
+
+    public AudioClip GetClip()
     {
-        
-    }
-    public void PlayClip()
-    {
-        source.Play();
-        Debug.Log(source.isPlaying);
+       return clip;
     }
 }

@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class TakeItem : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource speaker;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.GetComponent<Item>() != null)
+        if (other.gameObject.GetComponent<Item>() != null)
         {
-            collision.gameObject.GetComponent<Item>().PlayClip();
-           // Destroy(collision.gameObject);
+            var componenteItem = other.gameObject.GetComponent<Item>();
+            AudioClip clip = componenteItem.GetClip();
+            speaker.PlayOneShot(clip);
+
+            
+            Destroy(other.gameObject);
         }
     }
 }
