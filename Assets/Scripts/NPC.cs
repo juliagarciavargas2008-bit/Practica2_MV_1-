@@ -75,4 +75,8 @@ public class NPC : MonoBehaviour
          
         }
     }
+    public string GetState()
+    {
+        return estadoactual.ToString();
+    }
 }

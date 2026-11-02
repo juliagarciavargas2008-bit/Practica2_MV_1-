@@ -5,6 +5,13 @@ public class TakeItem : MonoBehaviour
 {
     [SerializeField]
     private AudioSource speaker;
+    private void Start()
+    {
+        if (speaker == null)
+        {
+            Debug.Log("falta fuente de audio");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,8 +20,7 @@ public class TakeItem : MonoBehaviour
             var componenteItem = other.gameObject.GetComponent<Item>();
             AudioClip clip = componenteItem.GetClip();
             speaker.PlayOneShot(clip);
-
-            
+            GameManager.instance.AddPuntos(componenteItem.GetPuntos());
             Destroy(other.gameObject);
         }
     }

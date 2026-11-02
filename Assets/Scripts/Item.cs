@@ -8,9 +8,12 @@ public class Item : MonoBehaviour
     [SerializeField]
     private int puntos;
 
-
     public AudioClip GetClip()
     {
        return clip;
+    }
+    public int GetPuntos()
+    {
+        return puntos;
     }
 }
