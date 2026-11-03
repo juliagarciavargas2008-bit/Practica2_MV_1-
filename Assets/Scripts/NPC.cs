@@ -17,6 +17,7 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private float drinktime;
 
+
     private enum Estado { esperando, recogiendo, bebiendo};
     private Estado estadoactual = Estado.esperando;
     private float hora;
@@ -79,4 +80,5 @@ public class NPC : MonoBehaviour
     {
         return estadoactual.ToString();
     }
+
 }

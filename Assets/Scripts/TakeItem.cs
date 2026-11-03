@@ -20,8 +20,8 @@ public class TakeItem : MonoBehaviour
             var componenteItem = other.gameObject.GetComponent<Item>();
             AudioClip clip = componenteItem.GetClip();
             speaker.PlayOneShot(clip);
-            GameManager.instance.AddPuntos(componenteItem.GetPuntos());
             Destroy(other.gameObject);
+            GameManager.instance.AddPuntos(componenteItem.GetPuntos());
         }
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RecogeCliente : MonoBehaviour
 {
+    [SerializeField]
+    private int puntos;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<NPC>()  != null)
@@ -10,8 +12,8 @@ public class RecogeCliente : MonoBehaviour
 
             if (cliente.GetState() == "recogiendo")
             {
+                GameManager.instance.MenosCliente();
                 Destroy(cliente.gameObject);
-                GameManager.instance.AddPuntos(1);
             }
         }
     }

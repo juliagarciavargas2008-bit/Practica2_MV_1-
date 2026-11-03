@@ -22,14 +22,20 @@ public class GameManager : MonoBehaviour
         if (instance != null)
         {
             Destroy(this.gameObject);
+            return;
         }
-        else
-        {
-            instance = this;
-        }
+
+        instance = this;
         clientes = UnityEngine.Object.FindObjectsByType<NPC>().Length;
-        gameover.SetActive(false);
-        gamewon.SetActive(false);
+        puntos.text = "puntos: " + Puntuacion;
+        if (gameover != null)
+        {
+            gameover.SetActive(false);
+        }
+        if (gamewon != null)
+        {
+            gamewon.SetActive(false);
+        }
         nvidas = vida.Length;
     }
 
@@ -37,7 +43,9 @@ public class GameManager : MonoBehaviour
     {
         if (clientes == 0 && Puntuacion != 0)
         {
-            if (UnityEngine.Object.FindObjectsByType<Desliza>() != null)
+            Debug.Log(UnityEngine.Object.FindObjectsByType<Desliza>().Length);
+
+            if (UnityEngine.Object.FindObjectsByType<Desliza>().Length == 0)
             {
                 gamewon.SetActive(true);
             }
@@ -59,5 +67,9 @@ public class GameManager : MonoBehaviour
     {
         Destroy(vida[nvidas - 1]);
         nvidas -= 1;
+    }
+    public void MenosCliente()
+    {
+        clientes--;
     }
 }

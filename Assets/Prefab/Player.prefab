@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   prefab: {fileID: 3952631004553259211, guid: 4cb58be80c346044b80bd5f7d73972d9, type: 3}
-  spawn: {fileID: 0}
+  spawn: {fileID: 6182164030864267352}
   disparar:
     m_Name: Disparar
     m_Type: 0
