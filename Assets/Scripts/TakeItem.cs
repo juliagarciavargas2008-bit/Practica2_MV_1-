@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class TakeItem : MonoBehaviour
 {
-    [SerializeField]
     private AudioSource speaker;
     private void Start()
-    {
+    { 
+        speaker = gameObject.GetComponent<AudioSource>(); 
         if (speaker == null)
         {
             Debug.Log("falta fuente de audio");

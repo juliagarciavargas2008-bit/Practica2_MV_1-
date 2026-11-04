@@ -13,6 +13,7 @@ public class RecogeCliente : MonoBehaviour
             if (cliente.GetState() == "recogiendo")
             {
                 GameManager.instance.MenosCliente();
+                GameManager.instance.AddPuntos(puntos);
                 Destroy(cliente.gameObject);
             }
         }

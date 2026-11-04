@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,18 +59,28 @@ public class GameManager : MonoBehaviour
 
     public void AddPuntos(int pts)
     {
-        Puntuacion += pts;
-        puntos.text = "puntos: " + Puntuacion;
-        Debug.Log("puntos: " + Puntuacion);
+        if (nvidas != 0)
+        {
+            Puntuacion += pts;
+            puntos.text = "puntos: " + Puntuacion;
+            Debug.Log("puntos: " + Puntuacion);
+        }
     }
 
     public void VidaMenos()
     {
-        Destroy(vida[nvidas - 1]);
-        nvidas -= 1;
+        if (nvidas != 0)
+        {
+            Destroy(vida[nvidas - 1]);
+            nvidas -= 1;
+        }
     }
     public void MenosCliente()
     {
         clientes--;
+    }
+    public void Reiniciar()
+    {
+        SceneManager.LoadScene(0); 
     }
 }
