@@ -108,10 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   prefab: {fileID: 4421180831946340164, guid: 222dc65cac090524383d36af5c09a536, type: 3}
-  speed: 0.5
+  speed: 0.4
   wait: 2
   drinktime: 3
-  puntos: 300
 --- !u!50 &8037471479088755253
 Rigidbody2D:
   serializedVersion: 5
