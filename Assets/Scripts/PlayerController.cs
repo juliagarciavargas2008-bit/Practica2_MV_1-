@@ -20,27 +20,39 @@ public class PlayerController : MonoBehaviour
     private InputAction abajo;
     private PlayerStandPoint[] componente;
     private int ind;
+    private bool moverse;
 
     void Start()
     {
         disparar = InputSystem.actions.FindAction("Jump");
         if (disparar != null) disparar.Enable();
 
-        arriba = InputSystem.actions.FindAction("Previous");
-        if (arriba != null) arriba.Enable();
+        componente = UnityEngine.Object.FindObjectsByType<PlayerStandPoint>();
+        if (componente.Length != 0)
+        {
+            moverse = true;
+            arriba = InputSystem.actions.FindAction("Previous");
+            if (arriba != null) arriba.Enable();
 
-        abajo = InputSystem.actions.FindAction("Next");
-        if (abajo != null) abajo.Enable();
+            abajo = InputSystem.actions.FindAction("Next");
+            if (abajo != null) abajo.Enable();
 
-        componente =  UnityEngine.Object.FindObjectsByType<PlayerStandPoint>();
-        ind = 1;
-        transform.position = RegresaPos().position;
+
+            ind = 1;
+            transform.position = RegresaPos().position;
+        } else 
+        {
+            moverse = false;
+            Debug.Log("No hay puntos por los que moverse");
+        }
+
+    
     }
 
     void Update()
     {
 
-        if (arriba.WasPressedThisFrame())
+        if (moverse && arriba.WasPressedThisFrame())
         {
             Debug.Log("arriba");
             if (ind == 1)
@@ -55,7 +67,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        else if (abajo.WasPressedThisFrame())
+        else if (moverse && abajo.WasPressedThisFrame())
         {
             Debug.Log("abajo");
             if (ind == componente.Length)

@@ -565,6 +565,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadZone
       objectReference: {fileID: 0}
+    - target: {fileID: 6439599593916110562, guid: 63867d00f7c662e40b9acb647ec6ef97, type: 3}
+      propertyPath: m_Size.y
+      value: 4.43673
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439599593916110562, guid: 63867d00f7c662e40b9acb647ec6ef97, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.718365
+      objectReference: {fileID: 0}
     - target: {fileID: 7449051488075892168, guid: 63867d00f7c662e40b9acb647ec6ef97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.04

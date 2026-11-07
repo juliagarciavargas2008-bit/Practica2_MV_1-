@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3219615256515635943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.263, y: 0.852, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   prefab: {fileID: 4421180831946340164, guid: 222dc65cac090524383d36af5c09a536, type: 3}
-  speed: 0.4
+  speed: 0.5
   wait: 2
   drinktime: 3
 --- !u!50 &8037471479088755253

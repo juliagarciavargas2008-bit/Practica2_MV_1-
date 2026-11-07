@@ -70,6 +70,7 @@ public class NPC : MonoBehaviour
             if (hora + drinktime < Time.time)
             {
                 prefab.transform.position = (cerveza - jugador) + posiactual;
+                
                 Instantiate(prefab);
                 estadoactual = Estado.esperando;
             }

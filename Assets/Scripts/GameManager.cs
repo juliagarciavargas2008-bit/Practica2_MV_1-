@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
         }
         else if (nvidas == 0)
         {
+            GameObject jugador;
+            jugador = UnityEngine.Object.FindFirstObjectByType<PlayerController>().gameObject;
+            jugador.GetComponent<PlayerController>().enabled = false;
+            jugador.GetComponent<TakeItem>().enabled = false;
             gameover.SetActive(true);
         }
     }
