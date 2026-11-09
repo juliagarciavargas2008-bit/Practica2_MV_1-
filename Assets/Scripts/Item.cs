@@ -10,7 +10,8 @@ public class Item : MonoBehaviour
 
     public AudioClip GetClip()
     {
-       return clip;
+        if (clip != null) return clip;
+        else return null;
     }
     public int GetPuntos()
     {

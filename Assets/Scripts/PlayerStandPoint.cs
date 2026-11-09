@@ -7,7 +7,8 @@ public class PlayerStandPoint : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        var sprite = GetComponent<SpriteRenderer>();
+        if (sprite != null) sprite.enabled = false;
     }
     public int GetOrden()
     {

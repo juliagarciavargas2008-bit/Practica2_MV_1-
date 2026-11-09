@@ -28,36 +28,35 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         clientes = UnityEngine.Object.FindObjectsByType<NPC>().Length;
-        puntos.text = "puntos: " + Puntuacion;
-        if (gameover != null)
-        {
-            gameover.SetActive(false);
-        }
-        if (gamewon != null)
-        {
-            gamewon.SetActive(false);
-        }
+
+        if (puntos != null) puntos.text = "puntos: " + Puntuacion;
+        if (gameover != null) gameover.SetActive(false);
+        if (gamewon != null) gamewon.SetActive(false);
+   
         nvidas = vida.Length;
     }
 
     private void Update()
     {
-        if (clientes == 0 && Puntuacion != 0)
+        if (clientes == 0)
         {
-            Debug.Log(UnityEngine.Object.FindObjectsByType<Desliza>().Length);
-
             if (UnityEngine.Object.FindObjectsByType<Desliza>().Length == 0)
             {
-                gamewon.SetActive(true);
+                if (gamewon != null) gamewon.SetActive(true);
+                else Debug.Log("Falta panel de gamewon");
             }
         }
         else if (nvidas == 0)
         {
             GameObject jugador;
-            jugador = UnityEngine.Object.FindFirstObjectByType<PlayerController>().gameObject;
+            jugador = UnityEngine.Object.FindAnyObjectByType<PlayerController>().gameObject;
             jugador.GetComponent<PlayerController>().enabled = false;
-            jugador.GetComponent<TakeItem>().enabled = false;
-            gameover.SetActive(true);
+
+            var takeitem = jugador.GetComponent<TakeItem>();
+            if (takeitem != null) jugador.GetComponent<TakeItem>().enabled = false;
+
+            if (gameover != null) gameover.SetActive(true);
+            else Debug.Log("Falta panel de gameover");
         }
     }
 
@@ -66,8 +65,7 @@ public class GameManager : MonoBehaviour
         if (nvidas != 0)
         {
             Puntuacion += pts;
-            puntos.text = "puntos: " + Puntuacion;
-            Debug.Log("puntos: " + Puntuacion);
+            if (puntos != null) puntos.text = "puntos: " + Puntuacion;
         }
     }
 

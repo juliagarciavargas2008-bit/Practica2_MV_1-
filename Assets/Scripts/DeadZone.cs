@@ -7,7 +7,10 @@ public class DeadZone : MonoBehaviour
         if (other.GetComponent<Desliza>() != null)
         {
             Destroy(other.gameObject);
-            GameManager.instance.VidaMenos();
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.VidaMenos();
+            } else Debug.Log ("Falta GameManager");
         }
     }
 }

@@ -7,10 +7,7 @@ public class TakeItem : MonoBehaviour
     private void Start()
     { 
         speaker = gameObject.GetComponent<AudioSource>(); 
-        if (speaker == null)
-        {
-            Debug.Log("falta fuente de audio");
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,9 +16,21 @@ public class TakeItem : MonoBehaviour
         {
             var componenteItem = other.gameObject.GetComponent<Item>();
             AudioClip clip = componenteItem.GetClip();
-            speaker.PlayOneShot(clip);
+
+            if ((speaker != null) && (clip != null)) speaker.PlayOneShot(clip);
+            else
+            {
+                if (speaker == null) Debug.Log("Falta el componente AudioSource");
+                if (clip == null) Debug.Log("Falta Clip");
+            }
+
             Destroy(other.gameObject);
-            GameManager.instance.AddPuntos(componenteItem.GetPuntos());
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.AddPuntos(componenteItem.GetPuntos());
+            }
+            else Debug.Log("Falta GameManager");
         }
     }
 }
